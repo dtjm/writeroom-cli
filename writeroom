@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Create the file if it doesn't exist
+if [ ! -e "$1" ] 
+then
+    touch "$1"
+fi
+
+# Open the file
+# -W  block until application quits
+# -a  which application to use
+open -W -a WriteRoom "$1"
+
+# Check if the file is zero size
+# If so, delete it so googlecl doesn't upload it
+# -s  file is NOT zero size
+if [ ! -s "$1" ] 
+then
+    rm "$1"
+fi
